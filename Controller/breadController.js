@@ -46,7 +46,10 @@ const getAll = async (req, res) =>
     }
 }
 
+
+
 module.exports = {
     postBread,
-    getAll
+    getAll,
+  
 }

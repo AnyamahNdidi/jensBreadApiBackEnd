@@ -31,7 +31,7 @@ const postDetaild = async (req, res) =>
             email,
           
             address,
-            done,
+            done:false,
             otpCode:oppt
 
         })
@@ -63,6 +63,25 @@ const postDetaild = async (req, res) =>
     
 }
 
+
+const getSingleOrder = async (req, res) =>
+{
+    try
+    {
+        const id = req.params.id
+        getGetOne = await details.findById(req.params.id)
+        res.status(200).json({
+            message: "one bread",
+            getGetOne
+        })
+        
+    } catch (error)
+    {
+        res.status(400).json({message: error.message})
+    }
+}
+
 module.exports = {
-    postDetaild
+    postDetaild,
+    getSingleOrder
 }

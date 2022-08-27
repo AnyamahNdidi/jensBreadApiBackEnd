@@ -8,7 +8,7 @@ mongoose.connect(url).then(() =>
     console.log('database connected')
 }).catch((error) =>
 {
-    console.log("something went wrong ", error)
+    console.log("something went wrong ", )
 })
 
 module.exports = mongoose
