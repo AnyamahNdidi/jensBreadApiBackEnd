@@ -14,7 +14,7 @@ const detailSchema = mongoose.Schema({
     otp: {
         type:Number,
     },
-    done: {
+    seenDispatch: {
         type:Boolean,
     },
 

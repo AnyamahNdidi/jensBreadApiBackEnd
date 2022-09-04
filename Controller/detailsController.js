@@ -5,6 +5,9 @@ const postDetaild = async (req, res) =>
 {
     try
     {
+
+        
+
         const {
             productOrder,
             otpCode,
@@ -13,7 +16,7 @@ const postDetaild = async (req, res) =>
           
             address,
             otp,
-            done,
+            seenDispatch,
             activate,
 
         } = req.body
@@ -31,7 +34,7 @@ const postDetaild = async (req, res) =>
             email,
           
             address,
-            done:false,
+            seenDispatch:false,
             otpCode:oppt
 
         })
@@ -63,6 +66,24 @@ const postDetaild = async (req, res) =>
     
 }
 
+const getAllOrder = async (req, res) =>
+{
+    try
+    {
+        const getAllData = await details.find()
+
+        res.status(200).json({
+            message: "all data",
+            data:getAllData
+            
+        })
+
+    } catch (error)
+    {
+        res.status(400).json({message: error.message})
+    }
+}
+
 
 const getSingleOrder = async (req, res) =>
 {
@@ -81,7 +102,27 @@ const getSingleOrder = async (req, res) =>
     }
 }
 
+const updateDispatch = async (req, res) =>
+{
+    try
+    {
+        const id = req.params.id
+        const disUpdate = await details.findByIdAndUpdate(
+            id,
+            { seenDispatch: true },
+            {new:true}
+        )
+        res.status(200).json(disUpdate)
+        
+    } catch (error)
+    {
+        res.status(400).json({message: error.message})
+    }
+}
+
 module.exports = {
     postDetaild,
-    getSingleOrder
+    getSingleOrder,
+    getAllOrder,
+    updateDispatch
 }
